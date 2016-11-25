@@ -19,7 +19,8 @@ class Favorites extends Component {
             return <Image 
                       key={i} 
                       type="favorite" 
-                      removeFromFav={this.props.removeFromFav} 
+                      removeFromFav={this.props.removeFromFav}
+                      draggable="true" 
                       {...favorite} />;
           })}
 

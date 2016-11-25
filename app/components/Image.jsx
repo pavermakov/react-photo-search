@@ -32,7 +32,7 @@ class Image extends Component {
 
     return (
       <div onClick={this.handleClick} style={{'display': 'inline-block'}}>
-        <img src={this.props.src} alt={this.props.pid} />
+        <img src={this.props.src} alt={this.props.pid} draggable={this.props.draggable} />
       </div>
     );
   }

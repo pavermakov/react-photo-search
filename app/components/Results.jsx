@@ -33,16 +33,18 @@ class Results extends Component {
   nextPage(){
     this.setState({
       currentPage: this.state.currentPage + 1
-    });
-    this.updateCurrentResults();
+    }, () => {
+      this.updateCurrentResults();
+    });   
   }
 
   prevPage(){
     if(this.state.currentPage > 1){
       this.setState({
         currentPage: this.state.currentPage - 1
-      });
-      this.updateCurrentResults();
+      }, () => {
+        this.updateCurrentResults();
+      });    
     }
   }
 
@@ -58,6 +60,7 @@ class Results extends Component {
   
   updateCurrentResults(){
     let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * 6, 6);
+    console.log(currentResults)   
     this.setState({currentResults});
   }
 
