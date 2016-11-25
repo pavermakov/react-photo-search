@@ -36,7 +36,7 @@ class App extends Component {
 
     photoSearchAPI.getPhotos(this.state.searchText)
       .then(results => {
-
+        // REFACTOR THIS PART
         let total;
 
         if(results[0] === 0){
