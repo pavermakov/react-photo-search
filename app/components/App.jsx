@@ -42,9 +42,10 @@ class App extends Component {
         if(results[0] === 0){
           console.log('No Results');
         } else {
-          // the first item is a total number of results 
+          
         } 
-        total = results.shift();
+        results.shift();
+        total = results.length;
         this.setState({results,total});   
       })
       .catch(err => {

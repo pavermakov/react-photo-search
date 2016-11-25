@@ -14,7 +14,11 @@ class Pagination extends Component {
   }
 
   handleNextClick(){
-    this.props.nextPage();
+    const {total, currentPage} = this.props;
+
+    if(currentPage <= Math.ceil(total / 6)){
+      this.props.nextPage();
+    }   
   }
 
   render() {

@@ -16,56 +16,70 @@ class Results extends Component {
 
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
+    this.renderPhotos = this.renderPhotos.bind(this);
     this.updateCurrentResults = this.updateCurrentResults.bind(this);
+
+    // if(this.state.currentResults.length > 0){
+    //   this.updateCurrentResults();
+    // }
+    
+  } 
+
+  componentDidMount() {
+    this.updateCurrentResults();
   }
+  
 
   nextPage(){
     this.setState({
-      currentPage: ++this.state.currentPage
+      currentPage: this.state.currentPage + 1
     });
-    this.updateCurrentResults()
+    this.updateCurrentResults();
   }
 
   prevPage(){
     if(this.state.currentPage > 1){
       this.setState({
-        currentPage: --this.state.currentPage
+        currentPage: this.state.currentPage - 1
       });
-      this.updateCurrentResults()
+      this.updateCurrentResults();
     }
+  }
+
+  renderPhotos(){ 
+    return this.state.currentResults.map((result, i) => {
+      return <Image 
+                key={i} 
+                type="result"
+                saveToFav={this.props.saveToFav}
+                {...result} />;
+    });
   }
   
   updateCurrentResults(){
-    let currentResults = this.props.results;
-    currentResults.splice((this.state.currentPage - 1) * 6, 6);
-    console.log(currentResults)
-
+    let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * 6, 6);
     this.setState({currentResults});
   }
 
   render(){
-    const {results, total} = this.props;
-
+    const {total} = this.props;
+    
     return (
       <div>
-        <h3>Results: {total.toLocaleString()}</h3>
+        <h3>Results: {total}</h3>
 
         <Display if={total}>
 
           <div>
-            {results.map((result, i) => {
-              return <Image 
-                        key={i} 
-                        type="result"
-                        saveToFav={this.props.saveToFav}
-                        {...result} />;
-            })}
+            {this.renderPhotos()}
           </div>
 
           <Pagination 
+            total={this.props.total}
             nextPage={this.nextPage} 
             prevPage={this.prevPage}
-            {...this.state} />
+            {...this.state} 
+          />
 
         </Display>
         
