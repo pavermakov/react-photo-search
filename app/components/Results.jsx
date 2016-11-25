@@ -1,35 +1,29 @@
 import React, {Component} from 'react';
 // my components
 import Image from 'Image';
+import Display from 'Display';
 
 class Results extends Component {
-
-  constructor(props){
-    super(props);
-    this.renderResults = this.renderResults.bind(this);
-  }
-
-  renderResults() {
-    const results = this.props.results;
-
-    if(results.length === 0){
-      return null;
-    } else {
-      return results.map((result, i) => {
-        return <Image 
-                  key={i} 
-                  type="result"
-                  saveToFav={this.props.saveToFav}
-                  {...result} />;
-      });
-    }
-  }
   
   render(){
+    const {results, total} = this.props;
+
     return (
       <div>
-        <h3>Results</h3>
-        {this.renderResults()}
+            {console.log('Results: ', results)}
+            <h3>Results: {total.toLocaleString()}</h3>
+
+
+            {results.map((result, i) => {
+              return <Image 
+                        key={i} 
+                        type="result"
+                        saveToFav={this.props.saveToFav}
+                        {...result} />;
+            })}
+
+          
+
       </div>
     )
   }

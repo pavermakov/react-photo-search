@@ -1,32 +1,30 @@
 import React, {Component} from 'react';
 // my components
 import Image from 'Image';
+import Display from 'Display';
 
 class Favorites extends Component {
 
-  constructor(props){
-    super(props);
-    this.renderFavorites = this.renderFavorites.bind(this);
-  }
-
-  renderFavorites(){
-    const favorites = this.props.favorites;
-    if(favorites.length === 0){
-      return null;
-    } else {
-      return favorites.map((favorite, i) => {
-        return <Image key={i} {...favorite} type="favorite" />;
-      });
-    }
-    // return <h1>{favorites.length}</h1>
-    // 
-  }
-
   render(){
+    const favorites = this.props.favorites;
+
     return (
       <div>
-        <h1>Favorites</h1>
-        {this.renderFavorites()}
+
+        <Display if={favorites.length !== 0}>
+
+          <h3>Favorites</h3>
+          
+          {favorites.map((favorite, i) => {
+            return <Image 
+                      key={i} 
+                      type="favorite" 
+                      removeFromFav={this.props.removeFromFav} 
+                      {...favorite} />;
+          })}
+
+        </Display>
+        
       </div>
     );
   }
