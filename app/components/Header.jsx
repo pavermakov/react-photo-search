@@ -21,11 +21,20 @@ class Header extends Component {
 
   render(){
     return (
-      <div>
-        <h1>Gallery</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type='text' ref='searchText' placeholder='search images ...' onKeyUp={this.handleKeyUp} />
-          <input type='submit' value='Search' />
+      <div className='header'>
+        <h1 className='header__heading'>Gallery</h1>
+        <form className='header__form' onSubmit={this.handleSubmit}>
+          <input 
+            className='header__search'
+            type='text' 
+            ref='searchText' 
+            placeholder='search images ...' 
+            onKeyUp={this.handleKeyUp} />
+
+          <input 
+            className='header__button'
+            type='submit' 
+            value='Search' />
         </form>
       </div>
     );

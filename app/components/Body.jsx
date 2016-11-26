@@ -17,7 +17,10 @@ class Body extends Component {
         </Display>
 
         
-        <Favorites favorites={this.props.favorites} removeFromFav={this.props.removeFromFav} />
+        <Favorites 
+          favorites={this.props.favorites} 
+          removeFromFav={this.props.removeFromFav} 
+          updateFav={this.props.updateFav}/>
       </div>
     );
   }

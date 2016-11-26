@@ -24,6 +24,7 @@ class App extends Component {
     this.handleInput = this.handleInput.bind(this);
     this.saveToFav = this.saveToFav.bind(this);
     this.removeFromFav = this.removeFromFav.bind(this);
+    this.updateFav = this.updateFav.bind(this);
   }
 
   handleInput(searchText){
@@ -66,11 +67,25 @@ class App extends Component {
     }   
   }
 
-  removeFromFav(id){
-    const index = _.findIndex(this.state.favorites, photo => photo.pid === id);
-    const newFavs = this.state.favorites;
+  removeFromFav(pid){
+    const index = _.findIndex(this.state.favorites, photo => photo.pid === pid);
+    let newFavs = this.state.favorites.slice();
     newFavs.splice(index,1);
     this.setState({favorites: newFavs}); 
+  }
+
+  updateFav(pid1, pid2){
+    console.log('Attempting to update: ', pid1, pid2);
+    const index1 = _.findIndex(this.state.favorites, photo => photo.pid === pid1);
+    const index2 = _.findIndex(this.state.favorites, photo => photo.pid === pid2);
+
+    let newFavs = this.state.favorites.slice();  
+    let temp = newFavs[index1];
+
+    newFavs[index1] = newFavs[index2];
+    newFavs[index2] = temp;
+
+    this.setState({favorites:newFavs});
   }
 
   render(){
@@ -84,7 +99,8 @@ class App extends Component {
           results={this.state.results} 
           favorites={this.state.favorites} 
           saveToFav={this.saveToFav} 
-          removeFromFav={this.removeFromFav} />
+          removeFromFav={this.removeFromFav} 
+          updateFav={this.updateFav}/>
       </div>
     );
   }

@@ -17,12 +17,7 @@ class Results extends Component {
     this.nextPage = this.nextPage.bind(this);
     this.prevPage = this.prevPage.bind(this);
     this.renderPhotos = this.renderPhotos.bind(this);
-    this.updateCurrentResults = this.updateCurrentResults.bind(this);
-
-    // if(this.state.currentResults.length > 0){
-    //   this.updateCurrentResults();
-    // }
-    
+    this.updateCurrentResults = this.updateCurrentResults.bind(this);   
   } 
 
   componentDidMount() {
@@ -59,8 +54,7 @@ class Results extends Component {
   }
   
   updateCurrentResults(){
-    let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * 6, 6);
-    console.log(currentResults)   
+    let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * 6, 6);   
     this.setState({currentResults});
   }
 

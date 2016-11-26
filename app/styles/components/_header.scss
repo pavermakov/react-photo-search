@@ -1,0 +1,37 @@
+.header{
+
+  &__heading{
+    margin-bottom: 20px;
+  }
+
+  &__form {
+    border-color: transparent;
+    color: $dark-blue;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  &__search{
+    border-color: inherit;
+    color: inherit;
+    flex-grow: 8;
+    font-size: inherit;
+    font-weight: bold;
+    height: 30px;
+    letter-spacing: inherit;
+    padding-left: 10px;
+  }
+
+  &__button{
+    background-color: $dark-blue;
+    border-color: inherit;
+    color: $white;
+    flex-grow: 1;
+    font-size: inherit;
+    font-weight: bold;
+    letter-spacing: inherit;
+  }
+
+}
