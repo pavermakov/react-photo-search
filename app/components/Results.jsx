@@ -47,7 +47,7 @@ class Results extends Component {
     return this.state.currentResults.map((result, i) => {
       return <Image 
                 key={i} 
-                type="result"
+                type="results"
                 saveToFav={this.props.saveToFav}
                 {...result} />;
     });
@@ -63,11 +63,11 @@ class Results extends Component {
     
     return (
       <div>
-        <h3>Results: {total}</h3>
+        <h3 className='body__heading'>Results: {total}</h3>
 
         <Display if={total}>
 
-          <div>
+          <div className={`body__results-items ${this.props.results ? 'body__results-items--full' : ''}`}>
             {this.renderPhotos()}
           </div>
 

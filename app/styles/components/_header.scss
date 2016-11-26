@@ -1,5 +1,7 @@
 .header{
 
+  margin-bottom: 20px;
+
   &__heading{
     margin-bottom: 20px;
   }
@@ -16,7 +18,7 @@
   &__search{
     border-color: inherit;
     color: inherit;
-    flex-grow: 8;
+    flex-grow: 5;
     font-size: inherit;
     font-weight: bold;
     height: 30px;
@@ -32,6 +34,10 @@
     font-size: inherit;
     font-weight: bold;
     letter-spacing: inherit;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
 }

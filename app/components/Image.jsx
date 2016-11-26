@@ -17,7 +17,7 @@ class Image extends Component {
   }
 
   handleClick(){
-    if(this.props.type === 'result'){
+    if(this.props.type === 'results'){
       this.props.saveToFav({
         pid: this.props.pid,
         src: this.props.src
@@ -62,22 +62,24 @@ class Image extends Component {
 
     return (
 
-      <div style={{'display': 'inline-block', 'padding': '10px'}}>
+      <div className={`body__${this.props.type}-item`}>
 
-        <Display if={type === 'result'}>
+        <Display if={type === 'results'}>
 
-          <div onClick={this.handleClick} >
-            <img src={this.props.src} alt={this.props.pid} />
+          <div className='photo' >
+            <img className='photo__src' src={this.props.src} alt={this.props.pid} />
+            <div className="photo__overlay">
+              <div className="photo__content" onClick={this.handleClick}>&#43;</div>
+            </div>
           </div>
 
         </Display>
 
-        <Display if={type === 'favorite'}>
+        <Display if={type === 'favorites'}>
 
           <div 
             onClick={this.handleClick} 
             onDragStart={this.handleDragStart}
-            
             onDragOver={this.handleDragOver}
             onDragLeave={this.handleDragLeave} 
             onDragEnd={this.handleDragEnd}
@@ -88,6 +90,7 @@ class Image extends Component {
 
         </Display>
 
+        
 
       </div>
     );

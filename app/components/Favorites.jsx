@@ -73,16 +73,17 @@ class Favorites extends Component {
     const favorites = this.props.favorites;
 
     return (
-      <div>
 
-        <Display if={favorites.length !== 0}>
+      <Display if={favorites.length !== 0}>
 
-          <h3>Favorites</h3>
+        <div>
+
+          <h3 className='body__heading body__heading--centered'>Favorites</h3>
           
           {favorites.map((favorite, i) => {
             return <Image 
                       key={i} 
-                      type="favorite" 
+                      type="favorites" 
                       removeFromFav={this.props.removeFromFav}
                       onDragStart={this.handleDragStart}
                       
@@ -93,9 +94,10 @@ class Favorites extends Component {
                       {...favorite} />;
           })}
 
-        </Display>
-        
-      </div>
+        </div>
+      
+      </Display>  
+
     );
   }
 

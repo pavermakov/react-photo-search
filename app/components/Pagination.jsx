@@ -16,17 +16,25 @@ class Pagination extends Component {
   handleNextClick(){
     const {total, currentPage} = this.props;
 
-    if(currentPage <= Math.ceil(total / 6)){
+    if(currentPage < Math.ceil(total / 6)){
       this.props.nextPage();
     }   
   }
 
   render() {
+    const {total, currentPage} = this.props;
+    const totalPages = Math.ceil(total / 6);
     return (
       <div className='pagination'>
-        <span onClick={this.handlePrevClick}>prev </span>
-        <span>{this.props.currentPage}</span>
-        <span onClick={this.handleNextClick}> next</span>
+        <span 
+          className={`pagination__button pagination__button--controls ${currentPage === 1 ?  'pagination__button--disabled': ''}`} 
+          onClick={this.handlePrevClick}>prev </span>
+
+        <span className='pagination__button'>{this.props.currentPage}</span>
+
+        <span 
+          className={`pagination__button pagination__button--controls ${currentPage === totalPages ? 'pagination__button--disabled': ''}`}
+          onClick={this.handleNextClick}> next</span>
       </div>
     );
   }

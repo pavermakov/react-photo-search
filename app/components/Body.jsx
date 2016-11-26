@@ -10,17 +10,26 @@ class Body extends Component {
   render(){
 
     return (
-      <div>
+      <div className='body'>
 
-        <Display if={this.props.total || this.props.total === 0}>
-          <Results total={this.props.total} results={this.props.results} saveToFav={this.props.saveToFav} />
-        </Display>
+        <div className='body__results'>
+          <Display if={this.props.total || this.props.total === 0}>
+            <Results
+              total={this.props.total}
+              results={this.props.results} 
+              saveToFav={this.props.saveToFav} />
+          </Display>
+        </div>
 
-        
-        <Favorites 
-          favorites={this.props.favorites} 
-          removeFromFav={this.props.removeFromFav} 
-          updateFav={this.props.updateFav}/>
+        <div className={`body__favorites ${this.props.favorites.length > 0 ? 'body__favorites--open' : ''}`}>
+          <Display if={this.props.favorites}>
+            <Favorites
+              favorites={this.props.favorites} 
+              removeFromFav={this.props.removeFromFav} 
+              updateFav={this.props.updateFav}
+            />
+          </Display>
+        </div>
       </div>
     );
   }

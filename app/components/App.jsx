@@ -7,6 +7,7 @@ import Body from 'Body';
 
 // api
 import photoSearchAPI from 'photo-search';
+import data from '../api/data.js';
 
 class App extends Component {
 
@@ -42,9 +43,9 @@ class App extends Component {
 
         if(results[0] === 0){
           console.log('No Results');
-        } else {
-          
+          results = data;
         } 
+
         results.shift();
         total = results.length;
         this.setState({results,total});   
