@@ -9,9 +9,10 @@ class Header extends Component {
   }
 
   handleSubmit(e){
-    // TODO validate input !!!!
     e.preventDefault();
-    this.props.onSearch();
+    if(this.refs.searchText.value.length > 0){
+      this.props.onSearch();
+    }  
   }
 
   handleKeyUp(){
@@ -20,6 +21,9 @@ class Header extends Component {
   }
 
   render(){
+
+    const {isSearching} = this.props;
+
     return (
       <div className='header'>
         <h1 className='header__heading'>Gallery</h1>
@@ -34,7 +38,8 @@ class Header extends Component {
           <input 
             className='header__button'
             type='submit' 
-            value='Search' />
+            value={isSearching ? 'Searching' : 'Search'}
+          />
         </form>
       </div>
     );

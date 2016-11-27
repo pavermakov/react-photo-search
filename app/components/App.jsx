@@ -18,7 +18,8 @@ class App extends Component {
       searchText: '',
       total: false,
       results: [],
-      favorites: []
+      favorites: [],
+      isSearching: false
     };
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -34,21 +35,23 @@ class App extends Component {
 
   handleSearch(){
     // clear out the previous results
-    this.setState({results:'', total: false});
+    this.setState({
+      isSearching: true,
+      results:'', 
+      total: false
+    });
 
     photoSearchAPI.getPhotos(this.state.searchText)
       .then(results => {
-        // REFACTOR THIS PART
-        let total;
 
         if(results[0] === 0){
-          console.log('No Results');
+          // backup for development purposes
           results = data;
         } 
 
         results.shift();
-        total = results.length;
-        this.setState({results,total});   
+        const total = results.length;
+        this.setState({results, total, isSearching: false});   
       })
       .catch(err => {
         console.log(err);
@@ -93,6 +96,7 @@ class App extends Component {
     return (
       <div className='container'>
         <Header 
+          isSearching={this.state.isSearching}
           onSearch={this.handleSearch} 
           onInput={this.handleInput} />
         <Body 
