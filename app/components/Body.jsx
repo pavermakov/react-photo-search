@@ -17,11 +17,12 @@ class Body extends Component {
             <Results
               total={this.props.total}
               results={this.props.results} 
-              saveToFav={this.props.saveToFav} />
+              saveToFav={this.props.saveToFav} 
+            />
           </Display>
         </div>
 
-        <div className={`body__favorites ${this.props.favorites.length > 0 ? 'body__favorites--open' : ''}`}>
+        <div className={`body__favorites ${this.props.favorites.length > 0 ? 'body__favorites-open' : ''}`}>
           <Display if={this.props.favorites}>
             <Favorites
               favorites={this.props.favorites} 

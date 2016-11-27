@@ -8,9 +8,12 @@ class Image extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      inFavorites: false
+    }
+
     this.handleClick = this.handleClick.bind(this);
     this.handleDragStart = this.handleDragStart.bind(this);
-    // this.handleDragEnter = this.handleDragEnter.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDragLeave = this.handleDragLeave.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
@@ -22,37 +25,29 @@ class Image extends Component {
         pid: this.props.pid,
         src: this.props.src
       });
+      this.setState({inFavorites: true});
     } else {
       this.props.removeFromFav(this.props.pid);
+      this.setState({inFavorites: false});
     }
   }
 
   handleDragStart(e){
-    console.log('drag: ' + this.props.pid);
     this.props.onDragStart(this.props.pid);
   }
 
-  // handleDragEnter(e){
-  //   e.preventDefault();
-  //   console.log('enter: ' + this.props.pid);
-  //   this.props.onDragEnter(this.props.pid);
-  // }
-
   handleDragOver(e){
     e.preventDefault();
-    console.log('over: ' + this.props.pid);
     this.props.onDragOver(this.props.pid);
   }
 
   handleDragLeave(e){
     e.preventDefault();
-    console.log('leave: ' + this.props.pid);
     this.props.onDragLeave(this.props.pid);
   }
 
   handleDragEnd(e){
     e.preventDefault();
-    console.log('end: ' + this.props.pid);
     this.props.onDragEnd();
   }
 
@@ -67,9 +62,11 @@ class Image extends Component {
         <Display if={type === 'results'}>
 
           <div className='photo' >
-            <img className='photo__src' src={this.props.src} alt={this.props.pid} />
-            <div className="photo__overlay">
-              <div className="photo__content" onClick={this.handleClick}>&#43;</div>
+            <img className={`photo__src`} src={this.props.src} alt={this.props.pid} />
+            <div className="photo__overlay" onClick={this.handleClick}>
+              <div className="photo__content">
+                <i className='fa fa-plus' aria-hidden="true"></i>
+              </div>
             </div>
           </div>
 
@@ -78,20 +75,23 @@ class Image extends Component {
         <Display if={type === 'favorites'}>
 
           <div 
-            onClick={this.handleClick} 
+            className='photo'
             onDragStart={this.handleDragStart}
             onDragOver={this.handleDragOver}
             onDragLeave={this.handleDragLeave} 
             onDragEnd={this.handleDragEnd}
             draggable='true'>
 
-            <img src={this.props.src} alt={this.props.pid} />
+            <img className='photo__src' src={this.props.src} alt={this.props.pid} />
+            <div className="photo__overlay">
+              <div className="photo__content" onClick={this.handleClick}>
+                <i className='fa fa-minus' aria-hidden="true"></i>
+              </div>
+            </div>
           </div>
 
         </Display>
-
         
-
       </div>
     );
   }

@@ -11,6 +11,7 @@ class Results extends Component {
 
     this.state = {
       currentPage: 1,
+      perPage: 6,
       currentResults: []
     };
 
@@ -54,7 +55,8 @@ class Results extends Component {
   }
   
   updateCurrentResults(){
-    let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * 6, 6);   
+    const n = this.state.perPage;
+    let currentResults = this.props.results.slice().splice((this.state.currentPage - 1) * n, n);   
     this.setState({currentResults});
   }
 
@@ -67,7 +69,7 @@ class Results extends Component {
 
         <Display if={total}>
 
-          <div className={`body__results-items ${this.props.results ? 'body__results-items--full' : ''}`}>
+          <div className={`body__results-items ${this.props.results ? 'body__results-items-full' : ''}`}>
             {this.renderPhotos()}
           </div>
 

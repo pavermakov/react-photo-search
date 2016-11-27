@@ -6,3 +6,9 @@
   max-width: 768px;
   padding: 20px;
 }
+
+@media only screen and (max-width: $medium-bp){
+  .container{
+    margin: 0 auto;
+  }
+}

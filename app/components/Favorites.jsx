@@ -15,7 +15,6 @@ class Favorites extends Component {
     }
 
     this.handleDragStart = this.handleDragStart.bind(this);
-    // this.handleDragEnter = this.handleDragEnter.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDragLeave = this.handleDragLeave.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
@@ -24,12 +23,6 @@ class Favorites extends Component {
   handleDragStart(draggablePhoto){
     this.setState({draggablePhoto});
   }
-
-  // handleDragEnter(enteredPhoto){
-  //   if(this.state.draggablePhoto !== enteredPhoto){
-  //     this.setState({enteredPhoto});
-  //   }
-  // }
 
   handleDragOver(hoveredPhoto){
     const {draggablePhoto, enteredPhoto} = this.state;
@@ -56,8 +49,6 @@ class Favorites extends Component {
     const {draggablePhoto, enteredPhoto, isHovering} = this.state;
 
     if(draggablePhoto && enteredPhoto && draggablePhoto !== enteredPhoto && isHovering){
-      console.log('Good job!');
-      // write a function that takes the draggable id, entered id, switches photos in array and rerenders favorites
       this.props.updateFav(draggablePhoto, enteredPhoto);
 
       this.setState({
@@ -78,21 +69,23 @@ class Favorites extends Component {
 
         <div>
 
-          <h3 className='body__heading body__heading--centered'>Favorites</h3>
+          <h3 className='body__heading'>Favorites</h3>
           
-          {favorites.map((favorite, i) => {
-            return <Image 
-                      key={i} 
-                      type="favorites" 
-                      removeFromFav={this.props.removeFromFav}
-                      onDragStart={this.handleDragStart}
-                      
-                      onDragOver={this.handleDragOver}
-                      onDragLeave={this.handleDragLeave}
-                      onDragEnd={this.handleDragEnd}
-                      {...this.state} 
-                      {...favorite} />;
-          })}
+          <div className="body__favorites-items">
+            {favorites.map((favorite, i) => {
+              return <Image 
+                        key={i} 
+                        type="favorites" 
+                        removeFromFav={this.props.removeFromFav}
+                        onDragStart={this.handleDragStart}
+                        
+                        onDragOver={this.handleDragOver}
+                        onDragLeave={this.handleDragLeave}
+                        onDragEnd={this.handleDragEnd}
+                        {...this.state} 
+                        {...favorite} />;
+            })}
+          </div>
 
         </div>
       
