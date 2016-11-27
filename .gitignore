@@ -2,3 +2,4 @@
 /app/api/data.js
 /app/tests/
 karma.conf.js
+npm-debug.log
