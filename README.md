@@ -6,15 +6,15 @@ A simple application that makes a photo search with a help of [VK photo.search A
 
 ### Screenshots
 
-![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture2.png)
+![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture2.PNG)
 
-![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture3.png)
+![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture3.PNG)
 
-![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture4.png)
+![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture4.PNG)
 
 Lol
 
-![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture1.png)
+![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture1.PNG)
 
 
 
