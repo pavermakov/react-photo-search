@@ -10,9 +10,10 @@ class Image extends Component {
 
     this.state = {
       inFavorites: false
-    }
+    };
 
     this.handleClick = this.handleClick.bind(this);
+    this.handleLoad = this.handleLoad.bind(this);
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDragOver = this.handleDragOver.bind(this);
     this.handleDragLeave = this.handleDragLeave.bind(this);
@@ -30,6 +31,11 @@ class Image extends Component {
       this.props.removeFromFav(this.props.pid);
       this.setState({inFavorites: false});
     }
+  }
+
+  handleLoad(e){
+    console.log('image is loaded');
+    this.setState({loaded: true});
   }
 
   handleDragStart(e){
@@ -61,8 +67,13 @@ class Image extends Component {
 
         <Display if={type === 'results'}>
 
-          <div className='photo' >
-            <img className={`photo__src`} src={this.props.src} alt={this.props.pid} />
+          <div className='photo'>
+            <img 
+              className={`photo__src`} 
+              src={this.props.src} 
+              alt={this.props.pid} 
+              onLoad={this.handleLoad} 
+            />
             <div className="photo__overlay" onClick={this.handleClick}>
               <div className="photo__content">
                 <i className='fa fa-plus' aria-hidden="true"></i>
