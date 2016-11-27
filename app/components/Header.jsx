@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/* THIS COMPONENT RENDERS THE SEARCH FORM */
+/* WHICH CONSISTS OF AN INPUT FIELD AND A BUTTON */
+
 class Header extends Component {
 
   constructor(props){

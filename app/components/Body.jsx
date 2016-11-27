@@ -5,6 +5,12 @@ import Results from 'Results';
 import Favorites from 'Favorites';
 import Display from 'Display';
 
+/* THIS COMPONENT RENDERS THE SEARCH RESULTS */
+/* AS WELL ALL PHOTOS SAVED TO FAVORITES */
+
+/* THE DISPLAY COMPONENT DISPLAYS ITS CHILDREN */
+/* IF THE 'IF' PROP IS 'TRUE' */
+
 class Body extends Component {
 
   render(){

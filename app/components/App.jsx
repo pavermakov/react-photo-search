@@ -7,7 +7,11 @@ import Body from 'Body';
 
 // api
 import photoSearchAPI from 'photo-search';
-import data from '../api/data.js';
+// development data
+//import data from '../api/data.js';
+
+/* THIS IS A MAIN COMPONENT */
+/* IT RENDERS HEADER (SEARCH FORM) AND BODY (SEARCH RESULTS) + FAVORITES */
 
 class App extends Component {
 
@@ -15,18 +19,18 @@ class App extends Component {
     super(props);
 
     this.state = {
-      searchText: '',
-      total: false,
-      results: [],
-      favorites: [],
+      searchText:  '',
+      total:       false,
+      results:     [],
+      favorites:   [],
       isSearching: false
     };
 
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleInput = this.handleInput.bind(this);
-    this.saveToFav = this.saveToFav.bind(this);
+    this.handleSearch  = this.handleSearch.bind(this);
+    this.handleInput   = this.handleInput.bind(this);
+    this.saveToFav     = this.saveToFav.bind(this);
     this.removeFromFav = this.removeFromFav.bind(this);
-    this.updateFav = this.updateFav.bind(this);
+    this.updateFav     = this.updateFav.bind(this);
   }
 
   handleInput(searchText){
@@ -41,14 +45,16 @@ class App extends Component {
       total: false
     });
 
+    // performing async call to VK api
     photoSearchAPI.getPhotos(this.state.searchText)
       .then(results => {
 
         if(results[0] === 0){
           // backup for development purposes
-          results = data;
+          //results = data;
         } 
 
+        // the first result in array is search id, we don't need it
         results.shift();
         const total = results.length;
         this.setState({results, total, isSearching: false});   
@@ -79,7 +85,7 @@ class App extends Component {
   }
 
   updateFav(pid1, pid2){
-    console.log('Attempting to update: ', pid1, pid2);
+    // switch 2 photos and re-render favorites
     const index1 = _.findIndex(this.state.favorites, photo => photo.pid === pid1);
     const index2 = _.findIndex(this.state.favorites, photo => photo.pid === pid2);
 

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 
+/* THIS COMPONENT ... WELL IT'S CLEAR AS MUD WHAT IT DOES' */
+/* MOVE ALONG, NOTHING TO SEE HERE */
+
 class Pagination extends Component {
 
   constructor(props){

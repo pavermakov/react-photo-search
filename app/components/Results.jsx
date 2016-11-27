@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
 // my components
-import Image from 'Image';
-import Display from 'Display';
-import Pagination from 'Pagination';
+import Image from 'Image';// ←--------------------|
+import Display from 'Display';//                 |
+import Pagination from 'Pagination';// ←--------|
+/*                                             |  */                                     
+/* THIS COMPONENT RENDERS SEARCH RESULTS      |  */ 
+/* AS WELL AS PAGINATION (THANKS CAP ________| )*/
 
 class Results extends Component {
 
@@ -24,9 +27,10 @@ class Results extends Component {
   componentDidMount() {
     this.updateCurrentResults();
   }
-  
 
   nextPage(){
+    /* NOT A SINGLE ASS TUORIAL ON THE WEB TOLD ME */
+    /* THAT this.setState() IS ASYNC */
     this.setState({
       currentPage: this.state.currentPage + 1
     }, () => {

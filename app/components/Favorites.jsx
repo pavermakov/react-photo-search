@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import Image from 'Image';
 import Display from 'Display';
 
+/* DRAGGING ONE FAVORITE IMAGE OVER ANOTHER WILL SWITCH THEM */
+
 class Favorites extends Component {
 
   constructor(props) {
