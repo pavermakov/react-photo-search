@@ -8,6 +8,8 @@ A simple application that makes a photo search with a help of [VK photo.search A
 
 ![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture2.PNG)
 
+Ability to add to / remove from Favorites, plus sorting via drag and drop.
+
 ![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture3.PNG)
 
 ![alt tag](https://raw.github.com/pavermakov/react-photo-search/master/screenshots/Capture4.PNG)
