@@ -65,6 +65,10 @@
 
       &-items{
         padding-right: 0;
+
+        &-full{
+          height: auto;
+        }
       }
     }
 
